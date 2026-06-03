@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<voice-interaction-service xmlns:android="http://schemas.android.com/apk/res/android"
+    android:sessionService="com.hermesandroid.bridge.service.HermesAssistantSessionService"
+    android:recognitionService="com.hermesandroid.bridge.service.HermesAssistantService"
+    android:settingsActivity="com.hermesandroid.bridge.MainActivity"
+    android:supportsAssist="true"
+    android:supportsLaunchVoiceAssistFromKeyguard="true"
+    android:supportsLocalInteraction="true" />
