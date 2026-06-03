@@ -13,10 +13,17 @@ class HermesAssistantSessionService : VoiceInteractionSessionService() {
 class HermesAssistantSession(context: android.content.Context) : VoiceInteractionSession(context) {
     override fun onHandleAssist(data: Bundle?, structure: android.app.assist.AssistStructure?, content: android.app.assist.AssistContent?) {
         super.onHandleAssist(data, structure, content)
-        // This is where the magic happens: 
-        // 1. Capture screen structure
-        // 2. Send it to the Python Agent
-        // 3. Ask "How can I help you, Boss?"
-        showWindow()
+        // Trigger the Python agent
+        Thread {
+            try {
+                val url = java.net.URL("http://localhost:8766/trigger_assistant")
+                val connection = url.openConnection() as java.net.HttpURLConnection
+                connection.requestMethod = "GET"
+                connection.responseCode
+                connection.disconnect()
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        }.start()
     }
 }
